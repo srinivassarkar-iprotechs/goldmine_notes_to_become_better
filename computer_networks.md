@@ -1,4 +1,4 @@
-# The DevOps Engineer's Guide to Computer Networks: From Packets to Production 🚀
+# Computer Networks: From Packets to Production 🚀
 
 *Everything you need to know about networking as a DevOps, Cloud, and DevSecOps engineer*
 
@@ -17,23 +17,23 @@ Let's dive into networking, but make it fun, practical, and directly applicable 
 Forget memorizing "Please Do Not Throw Sausage Pizza Away" mnemonics. Think of the OSI model as your debugging checklist when things go wrong:
 
 **Layer 7 - Application Layer**: Where your apps live (HTTP, DNS, SSH)
-- *DevOps Context*: Your API returns 404s, your DNS isn't resolving
+- *Context*: Your API returns 404s, your DNS isn't resolving
 - *Tools*: curl, dig, nslookup
 
 **Layer 4 - Transport Layer**: TCP vs UDP (Reliable vs Fast)
-- *DevOps Context*: Connection timeouts, port numbers, load balancer health checks
+- *Context*: Connection timeouts, port numbers, load balancer health checks
 - *Tools*: telnet, nc (netcat), nmap
 
 **Layer 3 - Network Layer**: IP addresses and routing
-- *DevOps Context*: VPC routing tables, subnets, NAT gateways
+- *Context*: VPC routing tables, subnets, NAT gateways
 - *Tools*: ping, traceroute, ip route
 
 **Layer 2 - Data Link Layer**: MAC addresses and switches
-- *DevOps Context*: Usually abstracted in cloud, but matters for on-prem and container networking
+- *Context*: Usually abstracted in cloud, but matters for on-prem and container networking
 - *Tools*: arp, ethtool
 
 **Layer 1 - Physical Layer**: Cables and wireless
-- *DevOps Context*: Rarely your problem in cloud, but bandwidth and latency matter
+- *Context*: Rarely your problem in cloud, but bandwidth and latency matter
 
 **Pro Tip**: When debugging, start from Layer 1 (is it plugged in? Can you reach the internet?) and work your way up to Layer 7 (is the application actually working?).
 
@@ -63,7 +63,7 @@ IPv4 addresses look like `192.168.1.100`. They're 32-bit numbers, which gives us
 - `/16` = 65,536 IPs (typical VPC size)
 - `/8` = 16,777,216 IPs (large VPC or corporate network)
 
-**DevOps Reality Check**: 
+**Reality Check**: 
 When creating a VPC, give yourself room to grow. Start with a `/16`, divide it into `/24` subnets for different availability zones and purposes (public, private, database).
 
 ### IPv6: The Future (That's Taking Forever)
@@ -95,7 +95,7 @@ When you type `api.company.com`:
 - **NS Record**: Nameserver delegation
 - **SRV Record**: Service discovery (Kubernetes uses these)
 
-**DevOps DNS Patterns**:
+**DNS Patterns**:
 
 ```
 # Blue-Green Deployment
@@ -155,7 +155,7 @@ UDP is like shouting across a room. Fast, low overhead, but no guarantee anyone 
 
 **Use UDP for**: DNS queries, video streaming, VoIP, game servers, monitoring metrics (StatsD)
 
-**DevOps Example**: 
+**Example**: 
 - Your health check? TCP (you need to know it's working)
 - Your metrics collection? UDP (if you lose one metric point, who cares?)
 
@@ -165,7 +165,7 @@ UDP is like shouting across a room. Fast, low overhead, but no guarantee anyone 
 
 ### Well-Known Ports (0-1023)
 
-Every DevOps engineer should memorize these:
+Every engineer should memorize these:
 
 ```
 20/21   - FTP (please don't use this anymore)
@@ -362,7 +362,7 @@ ssh -D 1080 user@remote-server
 # Now you have a SOCKS proxy on localhost:1080
 ```
 
-### Common DevOps Tunneling Scenarios
+### Common Tunneling Scenarios
 
 **Accessing RDS from Local Machine**:
 ```bash
@@ -481,7 +481,7 @@ Intermediate CA (issued by root)
 Your Certificate (issued by intermediate)
 ```
 
-**DevOps Must-Know**:
+**Must-Know**:
 - Let's Encrypt: Free automated certificates (90-day validity)
 - AWS ACM: Free certificates for AWS services
 - Wildcard certificates: `*.company.com` (one cert for all subdomains)
@@ -1481,7 +1481,7 @@ Action: Lambda function to update NACL and block source IP
 # Certificate expiration
 Metric: Days until certificate expiration
 Threshold: < 30 days
-Action: SNS notification to DevOps team
+Action: SNS notification to team
 ```
 
 ### Compliance and Audit
@@ -1573,7 +1573,7 @@ Humans make mistakes. Automate security controls and responses.
 
 ## Conclusion: Your Network Journey
 
-Networking is the foundation of everything we do in DevOps and cloud engineering. Whether you're deploying a simple web app or building a complex microservices architecture, understanding these concepts will make you a better engineer.
+Networking is the foundation of everything we do in and cloud engineering. Whether you're deploying a simple web app or building a complex microservices architecture, understanding these concepts will make you a better engineer.
 
 **Remember**:
 - **Start simple**: You don't need a service mesh for 3 microservices
