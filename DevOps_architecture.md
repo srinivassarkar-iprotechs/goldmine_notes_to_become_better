@@ -3,8 +3,6 @@
 
 ## 1. Docker Architecture (VERY COMMON)
 
-### Senior-Level Mental Model
-
 > Docker is **not** a VM manager. It is a **process isolation and lifecycle manager** built on top of Linux kernel primitives.
 
 If you understand Docker as "a structured way to run Linux processes with isolation + limits", you are already thinking like a senior.
@@ -522,4 +520,4 @@ Explain:
 
 ---
 
-**End of README**
+
