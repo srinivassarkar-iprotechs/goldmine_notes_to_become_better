@@ -170,6 +170,147 @@ Linux Kernel
 
 ---
 
+# Kubernetes – Quick Guide
+
+## 1. Pods
+
+* **Smallest deployable unit** in Kubernetes.
+* Can contain **one or more containers**.
+* Containers in a pod **share network (IP, ports) and storage (volumes)**.
+* Multi-container pods used for **sidecar patterns**:
+
+  * Logging
+  * Monitoring
+  * Proxy / reverse proxy
+
+---
+
+## 2. Deployments
+
+* Used to **manage application lifecycle**.
+* Maintains desired number of **pod replicas**.
+* Handles:
+
+  * Auto-restart on failure
+  * Rolling updates
+  * Rollbacks
+* **Declarative**: desired state defined in YAML.
+
+---
+
+## 3. Kubernetes Architecture
+
+### Control Plane
+
+* Manages and orchestrates the cluster.
+* Must be **highly available**.
+
+### Data Plane (Worker Nodes)
+
+* Runs actual application workloads.
+
+---
+
+## 4. Control Plane Components
+
+* **API Server**
+
+  * Entry point to the cluster.
+  * Handles auth, validation, and state changes.
+
+* **etcd**
+
+  * Distributed key-value store.
+  * Stores **entire cluster state**.
+  * Backup + HA are critical.
+
+* **Scheduler**
+
+  * Assigns pods to nodes.
+  * Considers resources, constraints, policies.
+
+* **Controller Manager**
+
+  * Runs controllers that reconcile desired vs actual state.
+  * Examples: Deployment Controller, ReplicaSet Controller.
+
+* **Cloud Controller Manager**
+
+  * Integrates cloud provider features (LB, IAM, networking).
+
+---
+
+## 5. Data Plane Components
+
+* **kubelet**
+
+  * Runs on every worker node.
+  * Ensures pods and containers are running as defined.
+
+* **Container Runtime**
+
+  * Manages container lifecycle.
+  * Examples: `containerd`, `CRI-O`.
+
+* **kube-proxy**
+
+  * Handles service networking and load balancing.
+  * Often replaced by advanced CNI plugins.
+
+* **CNI Plugins**
+
+  * Pod networking and IP management.
+  * Enforces network policies.
+  * Examples: Calico, Cilium.
+
+---
+
+## 6. Deployment Creation Flow (Very Important)
+
+1. User applies deployment YAML (`kubectl apply`).
+2. API Server:
+
+   * Authenticates & validates
+   * Stores desired state in etcd
+3. Deployment Controller creates a ReplicaSet.
+4. ReplicaSet Controller creates Pod objects.
+5. Scheduler assigns pods to nodes.
+6. kubelet:
+
+   * Pulls images
+   * Sets up networking & volumes
+   * Starts containers
+7. kubelet reports health back to API Server.
+8. Deployment Controller ensures desired replicas are always running.
+
+---
+
+## 7. Kubernetes Add-ons
+
+* **Metrics Server**
+
+  * Provides node & pod metrics.
+  * Required for HPA and `kubectl top`.
+
+* **CoreDNS**
+
+  * Internal DNS for services and pods.
+
+* **CNI / CSI / CRI**
+
+  * Pluggable interfaces for networking, storage, and runtime.
+
+* **Kubernetes Dashboard**
+
+  * Web UI for cluster visibility and health.
+
+---
+
+### One-Line Insight
+
+> Kubernetes is a **declarative system** where controllers continuously reconcile actual state to the desired state stored in etcd.
+
+---
 ## 2. Kubernetes Architecture (MOST IMPORTANT)
 
 ### Senior-Level Mental Model
