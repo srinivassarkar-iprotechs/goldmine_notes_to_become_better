@@ -1,5 +1,3 @@
----
-
 ## The Mental Model First
 
 Every network problem falls into one of these buckets:
