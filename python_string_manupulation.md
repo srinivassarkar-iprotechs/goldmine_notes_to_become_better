@@ -1,5 +1,3 @@
----
-
 # 🧠 1. The Core Mental Model
 
 Every string problem is one of these:
