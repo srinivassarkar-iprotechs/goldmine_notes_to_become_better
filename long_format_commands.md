@@ -1458,4 +1458,4 @@ After every P1/P2, document:
 
 ---
 
-**Version:** 1.0 | **Last Updated:** 2026 | **Maintained by:** Principal DevOps
+**Version:** 1.0 | **Last Updated:** 2026 | **Maintained by:** None
