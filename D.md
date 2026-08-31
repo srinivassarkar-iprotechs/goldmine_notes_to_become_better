@@ -1,5 +1,3 @@
----
-
 ## 🎙️ SECTION 1: Self-Introduction & Project Monologues
 
 ### 1. Master Self-Introduction (90–120 Seconds)
